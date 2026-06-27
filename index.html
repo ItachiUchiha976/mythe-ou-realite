@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#22180e">
 
 <title>Mythe ou Réalité ? Le Quiz des Idées Reçues de l'Histoire | Échos du Passé</title>
-<meta name="description" content="Sauras-tu démêler le vrai du faux ? 23 mythes historiques surprenants : Vikings, Napoléon, pyramides, Cléopâtre… Score final et résultat à partager. Quiz gratuit, rapide, mobile.">
+<meta name="description" content="Sauras-tu démêler le vrai du faux ? 10 mythes historiques surprenants par partie (Vikings, Napoléon, pyramides, Cléopâtre…). Score final et résultat à partager. Quiz gratuit, rapide, mobile.">
 <meta name="author" content="Échos du Passé">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://itachiuchiha976.github.io/mythe-ou-realite/">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Échos du Passé">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Mythe ou Réalité ? Le Quiz des Idées Reçues de l'Histoire">
-<meta property="og:description" content="23 mythes historiques surprenants. Sauras-tu démêler le vrai du faux ? Teste-toi et partage ton score.">
+<meta property="og:description" content="10 mythes historiques surprenants par partie. Sauras-tu démêler le vrai du faux ? Teste-toi et partage ton score.">
 <meta property="og:url" content="https://itachiuchiha976.github.io/mythe-ou-realite/">
 <meta property="og:image" content="https://itachiuchiha976.github.io/mythe-ou-realite/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mythe ou Réalité ? Le Quiz des Idées Reçues de l'Histoire">
-<meta name="twitter:description" content="23 mythes historiques surprenants. Sauras-tu démêler le vrai du faux ?">
+<meta name="twitter:description" content="10 mythes historiques surprenants par partie. Sauras-tu démêler le vrai du faux ?">
 <meta name="twitter:image" content="https://itachiuchiha976.github.io/mythe-ou-realite/og-image.png">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -49,7 +49,7 @@
     {
       "@type": "Quiz",
       "name": "Mythe ou Réalité ? Le Quiz des Idées Reçues de l'Histoire",
-      "description": "Quiz interactif gratuit : démêle le vrai du faux parmi 23 grandes idées reçues de l'Histoire. Score final et résultat partageable.",
+      "description": "Quiz interactif gratuit : démêle le vrai du faux parmi les grandes idées reçues de l'Histoire (10 questions par partie). Score final et résultat partageable.",
       "educationalLevel": "grand public",
       "inLanguage": "fr-FR",
       "url": "https://itachiuchiha976.github.io/mythe-ou-realite/",
@@ -78,6 +78,9 @@
     </p>
     <button id="btn-start" class="btn btn--primary btn--big">Commencer le quiz</button>
     <p class="meta-line">10 questions · ~3 minutes · 100&nbsp;% gratuit</p>
+    <p class="already-sub">Déjà fan d'Histoire&nbsp;?
+      <a href="https://www.youtube.com/channel/UCtI77IJDeqX1GXrZNkGJtaQ?sub_confirmation=1" target="_blank" rel="noopener">S'abonner à Échos du Passé →</a>
+    </p>
   </section>
 
   <!-- ============ ÉCRAN QUIZ ============ -->
@@ -135,13 +138,27 @@
       </a>
     </div>
 
-    <!-- ===== FUNNEL : capture email (stub localStorage) ===== -->
+    <!-- ===== FUNNEL : rebond vers le Comparateur IA (monétisation live) ===== -->
+    <div class="cta-ia">
+      <h3>L'IA peut-elle démêler le vrai du faux&nbsp;?</h3>
+      <p>Découvre les meilleurs outils IA de 2026 pour vérifier les faits en un instant — classés et comparés gratuitement.</p>
+      <a class="btn btn--ghost" href="https://itachiuchiha976.github.io/comparateur-ia/" target="_blank" rel="noopener">
+        Voir le comparatif IA →
+      </a>
+    </div>
+
+    <!-- ===== FUNNEL : capture email (Web3Forms) ===== -->
     <div class="cta-mail">
       <h3>Reçois le prochain quiz en avant-première</h3>
       <p>Un nouveau quiz historique arrive bientôt. Laisse ton e-mail, on te préviendra (zéro spam).</p>
-      <form id="mail-form" class="mail-form" novalidate>
-        <input id="mail-input" type="email" inputmode="email" autocomplete="email" placeholder="ton@email.fr" aria-label="Ton adresse e-mail" required>
+      <form id="mail-form" class="mail-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="d97a8c73-b827-48bb-b437-e053a73fdb7e">
+        <input type="hidden" name="subject" value="Mythe ou Réalité — nouveau lead">
+        <input type="hidden" name="from_name" value="Mythe ou Réalité">
+        <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">
+        <input id="mail-input" type="email" name="email" inputmode="email" autocomplete="email" placeholder="ton@email.fr" aria-label="Ton adresse e-mail" required>
         <button type="submit" class="btn btn--primary">Je veux le prochain quiz</button>
+        <p class="rgpd-note">Pas de spam. Désinscription en 1 clic. Tes données servent uniquement à t'envoyer les prochains quiz — pas de revente. <a href="mailto:apprentissage.feynman@gmail.com">Droit de suppression</a>.</p>
       </form>
       <p id="mail-feedback" class="mail-feedback" hidden>Merci ! Tu es sur la liste. 📜</p>
     </div>

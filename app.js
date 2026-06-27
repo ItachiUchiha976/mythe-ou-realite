@@ -299,20 +299,37 @@ function downloadImage(){
   a.click();
 }
 
-/* ---------- capture e-mail (stub localStorage) ---------- */
-function handleMail(e){
+/* ---------- capture e-mail (Web3Forms, AJAX) ---------- */
+async function handleMail(e){
   e.preventDefault();
-  const v = $('#mail-input').value.trim();
+  const form = $('#mail-form');
+  const input = $('#mail-input');
+  const v = input.value.trim();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
-    $('#mail-input').focus(); return;
+    input.focus(); return;
   }
+  const btn = form.querySelector('button[type="submit"]');
+  const oldLabel = btn ? btn.textContent : '';
+  if(btn){ btn.disabled = true; btn.textContent = 'Envoi…'; }
   try{
-    const list = JSON.parse(localStorage.getItem('edp_emails')||'[]');
-    if(!list.includes(v)) list.push(v);
-    localStorage.setItem('edp_emails', JSON.stringify(list));
-  }catch(e){}
-  $('#mail-form').hidden = true;
-  $('#mail-feedback').hidden = false;
+    const res = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+    if(res.ok){
+      form.hidden = true;
+      $('#mail-feedback').hidden = false;
+    }else{
+      throw new Error('submit failed');
+    }
+  }catch(err){
+    if(btn){ btn.disabled = false; btn.textContent = oldLabel; }
+    const fb = $('#mail-feedback');
+    fb.textContent = "Oups, un souci réseau. Réessaie dans un instant.";
+    fb.style.color = 'var(--red)';
+    fb.hidden = false;
+  }
 }
 
 /* ---------- liaisons ---------- */
